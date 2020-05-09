@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Image Moderator</title> 
+    <link rel = "icon" href = "/img/weather.png">
+    <link rel = "stylesheet" href = "/css/style.css">
+</head>
+
+<body>
+    <div class = "main-content">
+        {{>header}}
+
+        <p>Use this site to get the amount of mature content in an image</p>
+
+        <form>
+            <input placeholder="Enter image url">
+            <button>Get</button>
+        </form>
+
+        <pre id = "json"></pre>
+    </div>
+    <script src = "/js/app.js"></script>
+</body>
+</html>
