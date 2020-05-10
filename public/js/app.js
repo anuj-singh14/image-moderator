@@ -1,7 +1,6 @@
 const imageForm = document.querySelector('form')
 const imageurl = document.querySelector('input')
 const pre = document.querySelector('#json')
-// console.log('Hello')
 
 imageForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -19,22 +18,3 @@ imageForm.addEventListener('submit', (e) => {
         })
     })
 })
-
-// weatherForm.addEventListener('submit', (e) => {
-//     e.preventDefault()
-//     const loc = search.value
-    
-//     messageOne.textContent = 'Loading...'
-//     messageTwo.textContent = ''
-
-//     fetch('/weather?address=' + loc).then((response) => {
-//         response.json().then((data) => {
-//             if (data.error) {
-//                 return messageOne.textContent = data.error
-//             }
-    
-//             messageOne.textContent = data.location
-//             messageTwo.textContent = data.forecast
-//         })
-//     })
-// })
