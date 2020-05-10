@@ -2,12 +2,13 @@ const imageForm = document.querySelector('form')
 const imageurl = document.querySelector('input')
 const pre = document.querySelector('#json')
 const output = document.querySelector('#output');
+const img = document.querySelector('.portrait')
 
 imageForm.addEventListener('submit', (e) => {
     e.preventDefault()
     const url = imageurl.value
+    // img.src = "data:,"
 
-    // pre.textContent = 'Loading...'
     output.innerHTML='Loading...';
     fetch('/moderator?imageurl=' + url).then((response) => {
         response.json().then((data) => {
@@ -15,6 +16,9 @@ imageForm.addEventListener('submit', (e) => {
             if (data.error) {
                output.innerHTML=data.error;
             }
+
+            img.src = url
+
             data.map(result=>{
                 const newptag=document.createElement('p');
                 newptag.innerHTML=result;
