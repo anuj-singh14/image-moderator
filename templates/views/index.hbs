@@ -9,8 +9,11 @@
 
 <body>
     <div class = "main-content">
-        {{>header}}
-
+        <header>
+            <h1>{{title}}</h1>
+            <a href = "/">Image Moderator</a>
+            <a href = "/about">About Us</a>
+        </header>
         <p>Use this site to get the amount of mature content in an image</p>
 
         <form>
@@ -19,8 +22,7 @@
         </form>
 
         <img class = "portrait" src = "">
-        <pre id = "json"></pre>
-         <div id = "output"></div>
+        <div id = "output"></div>
     </div>
     <script src = "/js/app.js"></script>
 </body>
