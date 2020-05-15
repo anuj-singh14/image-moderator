@@ -48,7 +48,7 @@ app.get('/moderator', (req, res) => {
 		obj=data.outputs[0].data.concepts;
 		Object.keys(obj).forEach(key=>{
             let s= `Probability of `+obj[key].name 
-                   + ' is ' + obj[key].value;
+            		+ ' is ' + obj[key].value;
 			result.push(s);
 		})
 		res.send(result);
