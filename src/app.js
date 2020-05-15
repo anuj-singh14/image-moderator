@@ -24,45 +24,45 @@ hbs.registerPartials(partialsPath)
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
-    res.render('index', {
-        title: 'Image Moderator'
-    })
+	res.render('index', {
+		title: 'Image Moderator'
+	})
 })
 
 app.get('/about', (req, res) => {
-    res.render('about', {
-        title: 'About'
-    })
+	res.render('about', {
+		title: 'About'
+	})
 })
 
 app.get('/moderator', (req, res) => {
-    if (!req.query.imageurl) {
-        return res.send({ error: 'You must provide an image url!'})
-    }
+	if (!req.query.imageurl) {
+		return res.send({ error: 'You must provide an image url!' })
+	}
 
-    const url = req.query.imageurl
-    const result = []
+	const url = req.query.imageurl
+	const result = []
 	clarifaiApi.models
 	.predict('d16f390eb32cad478c7ae150069bd2c6',url)
-	.then(data=>{
-		obj=data.outputs[0].data.concepts;
+	.then(data => {
+		obj = data.outputs[0].data.concepts;
 		Object.keys(obj).forEach(key=>{
-            let s= `Probability of `+obj[key].name 
-            		+ ' is ' + obj[key].value;
+			let s= `Probability of `+obj[key].name 
+					+ ' is ' + obj[key].value;
 			result.push(s);
 		})
 		res.send(result);
 	})
-	.catch(err => res.send({ error: 'Image url is invalid!'}))
+	.catch(err => res.send({ error: 'Image url is invalid!' }))
 })
 
 app.get('*', (req, res) => {
-    res.render('error', {
-        title: '404',
-        message: 'Page not found',
-    })
+	res.render('error', {
+		title: '404',
+		message: 'Page not found',
+	})
 })
 
 app.listen(port, () => { 
-    console.log('Server is up on port ' + port + '.')
+	console.log('Server is up on port ' + port + '.')
 })
