@@ -43,11 +43,11 @@ app.get('/moderator', (req, res) => {
     const url = req.query.imageurl
     const result = []
     clarifaiApi.models
-    .predict('d16f390eb32cad478c7ae150069bd2c6',url)
+    .predict('d16f390eb32cad478c7ae150069bd2c6', url)
     .then(data => {
         obj = data.outputs[0].data.concepts;
-        Object.keys(obj).forEach(key=>{
-            let s= `Probability of `+obj[key].name 
+        Object.keys(obj).forEach(key => {
+            let s = `Probability of `+ obj[key].name 
                     + ' is ' + obj[key].value;
             result.push(s);
         })
